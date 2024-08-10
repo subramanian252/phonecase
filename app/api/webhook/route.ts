@@ -42,6 +42,7 @@ export async function POST(req: Request) {
           id: orderId,
         },
         data: {
+          isPaid: true,
           shippingAddress: {
             create: {
               name: session.customer_details?.name || "",

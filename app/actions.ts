@@ -139,3 +139,29 @@ export async function getUserDetails() {
 
   return { success: true };
 }
+
+export async function getPaymentStatus({ orderId }: { orderId: string }) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user) throw new Error("You need to be logged in");
+
+  const order = await prisma.order.findFirst({
+    where: {
+      userId: user?.id,
+      id: orderId,
+    },
+    include: {
+      configuration: true,
+      billingAddress: true,
+      shippingAddress: true,
+    },
+  });
+  if (!order) throw new Error("Order not found");
+
+  if (order.isPaid) {
+    return order;
+  } else {
+    return false;
+  }
+}
