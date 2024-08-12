@@ -91,7 +91,7 @@ function Page(props: Props) {
               )}
               <div className="text-zinc-700 mb-2 mt-5 text-sm flex flex-col">
                 {isUploading ? (
-                  <div className="flex flex-col items-center">
+                  <div className="flex flex-col gap-2 items-center">
                     <p>Uploading...</p>
                     <Progress
                       value={uploadProgress}

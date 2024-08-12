@@ -1,7 +1,7 @@
 import React from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import {
   getKindeServerSession,
@@ -31,7 +31,9 @@ async function Navbar(props: Props) {
           <div className="flex items-center gap-1">
             {user ? (
               <>
-                <LogoutLink>Logout</LogoutLink>
+                <LogoutLink>
+                  <Button variant="outline">logout</Button>
+                </LogoutLink>
                 {isAdmin && (
                   <Link
                     href={"/dashboard"}
@@ -53,15 +55,22 @@ async function Navbar(props: Props) {
               </>
             ) : (
               <>
-                <RegisterLink>Register</RegisterLink>
-
-                <LoginLink>Login</LoginLink>
-                <div className="w-px h-6 bg-zinc-200 hidden sm:block" />
+                <div className="flex gap-x-2 mr-2">
+                  <RegisterLink>
+                    <Button variant="secondary">Register</Button>
+                  </RegisterLink>
+                  <LoginLink>
+                    <Button className="" variant="outline">
+                      Log in
+                    </Button>
+                  </LoginLink>
+                </div>
+                <div className="w-px h-6 bg-zinc-200 hidden sm:block " />
                 <Link
                   href={"/configure/upload"}
                   className={buttonVariants({
                     variant: "default",
-                    className: "hidden sm:flex items-center gap-1",
+                    className: "hidden sm:flex items-center gap-1 ml-2",
                   })}
                 >
                   Create case

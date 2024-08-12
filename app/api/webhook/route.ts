@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { Resend } from "resend";
 import OrderReceived from "@/app/components/emails/OrderReceived";
+import { error } from "console";
 
 const resend = new Resend(process.env.RESEND_TOKEN);
 
@@ -69,9 +70,9 @@ export async function POST(req: Request) {
           },
         },
       });
-      await resend.emails.send({
+      const { data, error: reerror } = await resend.emails.send({
         from: "CaseCobra <suryasubramanian252@gmail.com>",
-        to: event.data.object.customer_details?.email,
+        to: [event.data.object.customer_details?.email],
         subject: "Your order was successfully placed",
         react: OrderReceived({
           // @ts-ignore
@@ -89,6 +90,7 @@ export async function POST(req: Request) {
         }),
       });
     }
+    console.log(reerror);
     return NextResponse.json({ result: event, ok: true });
   } catch (err) {
     console.log(err);
