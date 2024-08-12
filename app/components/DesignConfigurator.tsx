@@ -359,7 +359,7 @@ function DesignConfigurator(props: Props) {
                   <Button
                     disabled={isPending}
                     isLoading={isPending}
-                    loadingText="Loading..."
+                    loadingText="Loading"
                     onClick={() =>
                       mutate({
                         id,

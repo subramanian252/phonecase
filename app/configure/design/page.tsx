@@ -1,5 +1,6 @@
 import DesignConfigurator from "@/app/components/DesignConfigurator";
 import prisma from "@/app/lib/db";
+import { unstable_noStore as nostore } from "next/cache";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -8,6 +9,7 @@ interface Props {
 }
 
 async function Page(props: Props) {
+  nostore();
   const { searchParams } = props;
 
   const { id } = searchParams;

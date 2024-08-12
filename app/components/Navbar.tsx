@@ -37,7 +37,7 @@ async function Navbar(props: Props) {
                 </Link>
                 {isAdmin && (
                   <Link
-                    href={"/admin"}
+                    href={"/dashboard"}
                     className={buttonVariants({ variant: "ghost", size: "sm" })}
                   >
                     Dashboard

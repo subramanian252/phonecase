@@ -8,10 +8,12 @@ import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
+import { unstable_noStore as nostore } from "next/cache";
 
 interface Props {}
 
 function Page(props: Props) {
+  nostore();
   const {} = props;
 
   const [isDragOver, setIsDragOver] = useState<boolean>(false);

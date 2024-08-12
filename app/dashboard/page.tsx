@@ -21,13 +21,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import DropDown from "../components/DropDown";
+import { unstable_noStore as nostore } from "next/cache";
 
 interface Props {}
 
 async function Page(props: Props) {
+  nostore();
+
   const {} = props;
 
   const { getUser } = getKindeServerSession();
+
   const user = await getUser();
 
   if (!user || user.email !== process.env.ADMIN_EMAIL) return notFound();

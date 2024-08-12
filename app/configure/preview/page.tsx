@@ -2,6 +2,7 @@ import DesignPreview from "@/app/components/DesignPreview";
 import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
 import React from "react";
+import { unstable_noStore as nostore } from "next/cache";
 
 interface Props {
   searchParams: {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 async function Page(props: Props) {
+  nostore();
   const {
     searchParams: { id },
   } = props;

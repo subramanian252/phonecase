@@ -3,6 +3,7 @@
 import { getUserDetails } from "@/app/actions";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
+import { unstable_noStore } from "next/cache";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 

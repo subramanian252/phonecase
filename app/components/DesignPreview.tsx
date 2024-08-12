@@ -39,6 +39,8 @@ function DesignPreview(props: Props) {
 
   console.log(`bg-${tw}`);
 
+  console.log(user);
+
   const { mutate } = useMutation({
     mutationKey: ["payment"],
     mutationFn: createPaymentSession,
