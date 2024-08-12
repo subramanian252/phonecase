@@ -15,12 +15,14 @@ import { useToast } from "@/components/ui/use-toast";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import DialogModel from "./DialogModel";
 import { COLORS } from "../lib/validators";
+import { unstable_noStore as nostore } from "next/cache";
 
 interface Props {
   configuration: Configuration;
 }
 
 function DesignPreview(props: Props) {
+  nostore();
   const { configuration } = props;
 
   const [showConfetti, setShowConfetti] = React.useState(false);

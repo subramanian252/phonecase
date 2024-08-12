@@ -36,6 +36,8 @@ async function Page(props: Props) {
 
   if (!user || user.email !== process.env.ADMIN_EMAIL) return notFound();
 
+  console.log(user);
+
   const data = await prisma.order.findMany({
     where: {
       isPaid: true,
