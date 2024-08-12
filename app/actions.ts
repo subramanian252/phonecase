@@ -5,6 +5,7 @@ import {
   CaseFinish,
   CaseMaterial,
   Order,
+  OrderStatus,
   PhoneModel,
 } from "@prisma/client";
 import prisma from "./lib/db";
@@ -164,4 +165,22 @@ export async function getPaymentStatus({ orderId }: { orderId: string }) {
   } else {
     return false;
   }
+}
+
+export async function changeStatus({
+  orderId,
+  status,
+}: {
+  orderId: string;
+  status: OrderStatus;
+}) {
+  const order = await prisma.order.update({
+    where: {
+      id: orderId,
+    },
+    data: {
+      status,
+    },
+  });
+  return order;
 }
