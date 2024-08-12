@@ -43,7 +43,7 @@ function DesignPreview(props: Props) {
 
   console.log(user);
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ["payment"],
     mutationFn: createPaymentSession,
     onSuccess: ({ url }) => router.push(url as string),
@@ -176,7 +176,7 @@ function DesignPreview(props: Props) {
           </div>
           <div className="mt-6 w-full flex justify-end">
             <Button
-              isLoading
+              isLoading={isPending}
               loadingText="Loading"
               disabled={true}
               className="ml-auto p-4 lg:px-8"
