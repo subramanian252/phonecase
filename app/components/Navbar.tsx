@@ -32,7 +32,7 @@ async function Navbar(props: Props) {
             {user ? (
               <>
                 <LogoutLink>
-                  <Button variant="outline">logout</Button>
+                  <Button variant="ghost">logout</Button>
                 </LogoutLink>
                 {isAdmin && (
                   <Link
