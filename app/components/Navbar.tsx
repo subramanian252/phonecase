@@ -3,7 +3,12 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import {
+  getKindeServerSession,
+  LoginLink,
+  LogoutLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/server";
 
 interface Props {}
 
@@ -26,15 +31,7 @@ async function Navbar(props: Props) {
           <div className="flex items-center gap-1">
             {user ? (
               <>
-                <Link
-                  href={"/api/auth/logout"}
-                  className={buttonVariants({
-                    variant: "ghost",
-                    size: "sm",
-                  })}
-                >
-                  Sign out
-                </Link>
+                <LogoutLink>Logout</LogoutLink>
                 {isAdmin && (
                   <Link
                     href={"/dashboard"}
@@ -56,25 +53,9 @@ async function Navbar(props: Props) {
               </>
             ) : (
               <>
-                <Link
-                  href={"/api/auth/register"}
-                  className={buttonVariants({
-                    variant: "ghost",
-                    size: "sm",
-                  })}
-                >
-                  Sign up
-                </Link>
+                <RegisterLink>Register</RegisterLink>
 
-                <Link
-                  href={"/api/auth/login"}
-                  className={buttonVariants({
-                    variant: "ghost",
-                    className: "hidden sm:flex items-center gap-1",
-                  })}
-                >
-                  Login
-                </Link>
+                <LoginLink>Login</LoginLink>
                 <div className="w-px h-6 bg-zinc-200 hidden sm:block" />
                 <Link
                   href={"/configure/upload"}
