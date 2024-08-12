@@ -178,7 +178,7 @@ function DesignPreview(props: Props) {
             <Button
               isLoading={isPending}
               loadingText="Loading"
-              disabled={true}
+              disabled={isPending}
               className="ml-auto p-4 lg:px-8"
               onClick={handleCheckout}
             >
