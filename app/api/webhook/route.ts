@@ -71,7 +71,7 @@ export async function POST(req: Request) {
         },
       });
       const { data, error: reerror } = await resend.emails.send({
-        from: "Acme <onboarding@resend.dev>",
+        from: "PhoneCase <onboarding@resend.dev>",
         to: [event.data.object.customer_details?.email],
         subject: "Your order was successfully placed",
         react: OrderReceived({
