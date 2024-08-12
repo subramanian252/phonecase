@@ -90,7 +90,6 @@ export async function POST(req: Request) {
         }),
       });
     }
-    console.log(reerror);
     return NextResponse.json({ result: event, ok: true });
   } catch (err) {
     console.log(err);
