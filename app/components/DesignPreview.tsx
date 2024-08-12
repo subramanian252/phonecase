@@ -176,9 +176,9 @@ function DesignPreview(props: Props) {
           </div>
           <div className="mt-6 w-full flex justify-end">
             <Button
-              //   isLoading
-              //   loadingText="Loading"
-              //   disabled={true}
+              isLoading
+              loadingText="Loading"
+              disabled={true}
               className="ml-auto p-4 lg:px-8"
               onClick={handleCheckout}
             >
